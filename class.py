@@ -204,7 +204,27 @@
 #         self.name = newstudent
 #         return f"Name-Student: {self.name}"
 #     def getAge(self,newagestudent):
-#         self.age = newagestudent
+#         self.age = newagestudentclass Wath:
+#     def __init__(self,x,y) -> None:
+#         self.x = x
+#         self.y = y
+#     def add(self):
+#         print("Сложение")
+#         return f"{self.x + self.y}"
+#     def sub(self):
+#         print("вычитание")
+#         return f"{self.x - self.y}"
+#     def mul(self):
+#         print("умножение")
+#         return f"{self.x * self.y}"
+#     def truediv(self):
+#         print("деление")
+#         return f"{self.x // self.y}"
+# a = Wath(100,9)
+# print(a.add())
+# print(a.mul())
+# print(a.sub())
+# print(a.truediv())
 #         return f"Age-student: {self.age}"
 #     def getGroupNumber(self,newgroupstudent):
 #         self.groupNumber = newgroupstudent
@@ -230,16 +250,147 @@
 # for cyti in lst:
 #     print(cyti, len(cyti))
 #################################
+# class Hello:
+#     def __init__(self,name,surname) -> None:
+#         self.name = name
+#         self.surname =surname
+#     def info(self):
+#         return f"{self.name}, {self.surname}"
+#     def __str__(self) -> str:
+#         return f"str: {self.name}, {self.surname}"
+#     # def __repr__(self) -> str:
+#     #     return f"Repr: {self.name}, {self.surname}"
+#     def __call__(self,new_name):
+#         self.name = new_name
+        
+# hello = Hello("askhat", "kydyrov")
+# print(hello)
+# hello("zahro")
+# print(hello)
+###############################################
+# from abc import ABC, abstractmethod
+# class Math(ABC):
+#     def __init__(self,num1,num2):
+#         self.num1 = num1 
+#         self.num2 = num2 
+#     @abstractmethod
+#     def add(self):
+#         pass
+#     @abstractmethod
+#     def sub(self):
+#         pass
+#     @abstractmethod
+#     def mult(self):
+#         pass
+#     @abstractmethod
+#     def div(self):
+#         pass
+# class Sub(Math):
+#     def __init__(self, num1, num2):
+#         super().__init__(num1, num2)
+#     def add(self):
+#         return self.num1 + self.num2
+#     def sub(self):
+#         return self.num1 - self.num2
+#     def div(self):
+#         return self.num1 / self.num2
+#     def mult(self):
+#         return self.num1 * self.num2
+# sab = Sub(10,10)
+# print(sab.add())
+#####################################
+# class A:
+#     color = "red"
+#     def hello(self):
+#         return "hello"
+#     def test(self):
+#         return "class A"
+# class B:
+#     age = 18
+#     def world(self):
+#         return "world"
+#     def test(self):
+#         return "class B"
+# class C(A,B):
+#     def python(self):
+#         return "python"
+#     def test(self):
+#         return "class C"
+# c = C()
+# print(c.color)
+# print(c.hello())
+# print(c.age)
+# print(c.world())
+# print(c.python())
+# print(c.test())
+###############################
+# class CarEngineMixin:
+#     def engine(self):
+#         return "Мотор"
+# class CarDoorMixin:
+#     def door(self):
+#         return "дверь"
+# class CarWeelMixin:
+#     def weel(self):
+#         return "колесо"
+# class carAirBagMixin:
+#     def airbag(self):
+#         return "подушка безопасности"
+# class CarSafetyBeltMixin:
+#     def safetybelt(self):
+#         return "Ремень безопасности"
+# class Car(CarEngineMixin, CarDoorMixin, CarWeelMixin,carAirBagMixin,CarSafetyBeltMixin):
+#     def __init__(self,brand,modal,year) -> None:
+#         self.brand = brand
+#         self.modal = modal
+#         self.year = year
+# bmw = Car("BMW", "xr5", 2005)
+# print(bmw.door())
+# print(bmw.weel())
+# print(bmw.airbag())
+# print(bmw.safetybelt())
+#####################################
+import random
 
-# class Alphed:
-#     def __init__(self,lang,letters):
-#         self.lang = lang
-#         self.letters = letters
-#     def alphed(self):
-#         return f"alphed: {self.letters} lenght: {len(self.letters)}"
-#     def english(self,langi,lettersi):
-#         self.langi = langi
-#         return f"len: {langi}, letters: {lettersi}, len: {len(lettersi)}"
-#     def len(self):
-#         return f"len: {len()}"
+class GTA:
+    def __init__(self, name):
+        self.name = name
+        self.health = 100
+        self.money = 100
+        self.satiety = 100
+        self.walk = 0
+        if self.name not in ["Michael", "Trevor", "Franklin"]:
+            print("There is no such character")
 
+    def __str__(self):
+        return f"Name: {self.name}, Health: {self.health}, Money: {self.money}, Satiety: {self.satiety}, Walk: {self.walk}"
+
+    def do_walk(self):
+        self.walk += 1
+        return self.walk
+
+    def attack(self, damage):
+        if 1 <= damage <= 20:
+            print(f"Your character attacked and did damage to {damage}")
+        else:
+            print("You did no damage")
+
+    def take_damage(self):
+        damage = random.randint(1, 50)
+        self.health -= damage
+        if self.health <= 0:
+            self.money -= 10
+            self.health = 100
+            print(f"Your character took damage {damage} and now has {self.health} health and ${self.money} money")
+
+    def make_money(self):
+        self.money += 100
+        return self.money
+
+gta = GTA("Michael")
+print(gta)
+gta.do_walk()
+gta.attack(15)
+gta.take_damage()
+gta.make_money()
+print(gta)
